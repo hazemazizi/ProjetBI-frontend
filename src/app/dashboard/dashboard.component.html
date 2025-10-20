@@ -1,0 +1,156 @@
+<div *ngIf="userRole; else noAccess" class="dashboard-container">
+  <!-- Ultra Modern Header with Advanced Effects -->
+  <div class="dashboard-header">
+    <!-- Animated Background Elements -->
+    <div class="header-bg-overlay"></div>
+    <div class="header-particles">
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+      <span class="particle"></span>
+    </div>
+    
+    <div class="header-content">
+      <div class="brand-section">
+        <!-- Premium Logo with Badge -->
+        <div class="logo-container">
+          <div class="logo-circle">
+            <mat-icon class="logo-icon">local_hospital</mat-icon>
+            <div class="logo-ring"></div>
+            <div class="logo-ring-2"></div>
+          </div>
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            <span class="status-text">Live</span>
+          </div>
+        </div>
+        
+        <!-- Title with Decorative Elements -->
+        <div class="title-wrapper">
+          <div class="title-decoration"></div>
+          <h1 class="main-title">
+            <span class="title-gradient">Apollo</span>
+            <span class="title-light">Hospitals</span>
+          </h1>
+          <p class="subtitle">
+            <mat-icon class="subtitle-icon">analytics</mat-icon>
+            <span>{{ dashboardTitle }}</span>
+          </p>
+        </div>
+      </div>
+      
+      <div class="header-actions">
+        <!-- Enhanced User Badge with Dropdown Effect -->
+        <div class="user-profile-badge">
+          <div class="profile-avatar">
+            <mat-icon>account_circle</mat-icon>
+            <span class="avatar-glow"></span>
+          </div>
+          <div class="profile-info">
+            <span class="profile-role">{{ userRole }}</span>
+            <span class="profile-status">Administrator</span>
+          </div>
+          <mat-icon class="dropdown-icon">expand_more</mat-icon>
+        </div>
+        
+        <!-- Premium Logout Button -->
+        <button mat-flat-button class="premium-logout-btn" (click)="logout()">
+          <span class="btn-bg"></span>
+          <span class="btn-content">
+            <mat-icon>power_settings_new</mat-icon>
+            <span class="btn-text">Logout</span>
+          </span>
+          <span class="btn-shine"></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Bottom Accent Line -->
+    <div class="header-accent-line">
+      <div class="accent-line-fill"></div>
+    </div>
+  </div>
+  
+  <!-- Dashboard Content with Shadow -->
+  <div class="iframe-wrapper">
+    <div class="iframe-shadow-top"></div>
+    <iframe 
+      *ngIf="embedUrl"
+      [src]="embedUrl" 
+      class="report-container" 
+      frameborder="0" 
+      allowfullscreen>
+    </iframe>
+    
+    <!-- Premium Loading Screen -->
+    <div *ngIf="!embedUrl" class="loading-container">
+      <div class="loading-content">
+        <div class="loading-logo">
+          <mat-icon class="loading-icon">local_hospital</mat-icon>
+          <div class="loading-circle"></div>
+          <div class="loading-circle-2"></div>
+        </div>
+        <h3 class="loading-title">Preparing Your Dashboard</h3>
+        <p class="loading-subtitle">Loading analytics and insights...</p>
+        <div class="loading-progress">
+          <div class="progress-bar">
+            <div class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Premium Access Denied Screen -->
+<ng-template #noAccess>
+  <div class="access-denied">
+    <div class="denied-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    
+    <div class="denied-content">
+      <div class="denied-icon-wrapper">
+        <div class="lock-animation">
+          <mat-icon class="lock-icon">lock</mat-icon>
+          <div class="lock-glow"></div>
+        </div>
+        <div class="security-rings">
+          <div class="security-ring"></div>
+          <div class="security-ring"></div>
+          <div class="security-ring"></div>
+        </div>
+      </div>
+      
+      <h2 class="denied-title">
+        <span class="denied-title-main">Access Restricted</span>
+        <span class="denied-title-sub">Authentication Required</span>
+      </h2>
+      
+      <p class="denied-message">
+        This dashboard requires valid credentials. Please authenticate to continue.
+      </p>
+      
+      <div class="denied-stats">
+        <div class="stat-item">
+          <mat-icon>shield</mat-icon>
+          <span>Secure Access</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <mat-icon>verified_user</mat-icon>
+          <span>Encrypted</span>
+        </div>
+      </div>
+      
+      <button mat-flat-button class="login-redirect-btn" (click)="logout()">
+        <span class="btn-glow"></span>
+        <mat-icon>login</mat-icon>
+        <span>Return to Login</span>
+      </button>
+    </div>
+  </div>
+</ng-template>
